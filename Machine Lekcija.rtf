@@ -1,0 +1,335 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 CourierNewPS-BoldMT;
+\f3\fmodern\fcharset0 CourierNewPSMT;\f4\fnil\fcharset0 HelveticaNeue-Bold;\f5\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red31\green33\blue41;\red254\green192\blue200;\red199\green202\blue206;
+\red10\green82\blue135;\red255\green255\blue255;\red15\green114\blue1;\red0\green0\blue255;\red251\green0\blue129;
+\red18\green139\blue2;\red173\green45\blue55;\red109\green109\blue109;\red217\green0\blue27;}
+{\*\expandedcolortbl;;\cssrgb\c16471\c17255\c21176;\cssrgb\c100000\c80392\c82353;\cssrgb\c81961\c83137\c84314;
+\cssrgb\c0\c40000\c60000;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c50980\c0;\cssrgb\c0\c0\c100000;\cssrgb\c100000\c7843\c57647;
+\cssrgb\c0\c60000\c0;\cssrgb\c74118\c25490\c27843;\cssrgb\c50196\c50196\c50196;\cssrgb\c89020\c10588\c13725;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid2\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15900\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl80 \clpadb40 \clpadr40 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sa320\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Analiza sentimenta je proces u kojem pomo\uc0\u263 u ra\u269 unara automatski prepoznajemo emociju ili ton u tekstu. Naj\u269 e\'9a\u263 e se koristi da odredi da li je recenzija proizvoda pozitivna, negativna ili neutralna.\cb1 \
+\cb3 U su\'9atini, ra\uc0\u269 unar u\u269 i da razume tekst na sli\u269 an na\u269 in kao \u269 ovek.\cb1 \cell \lastrow\row
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 Primjer - otvaranje skupa recenzija, brojimo redove, trazimo praznine, gredamo primjere i racunamo prosjecnu duzinu teksta: \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+import
+\f3\b0 \cf2  pandas as pd\
+\cf7 # Load the unlabeled dataset\cf2 \'a0\
+df 
+\f2\b \cf5 =
+\f3\b0 \cf2  pd.read_csv(\cf8 "data/reviews_unlabeled.csv"\cf2 )\
+\
+\cf7 # 1. Print dataset shape (rows and columns)\cf2 \
+\cf9 print\cf2 (\cf8 "Dataset shape (rows, columns):"\cf2 , df.shape)\
+\'a0\
+\cf7 # 2. Check for missing values\cf2 \
+\cf9 print\cf2 (\cf8 "\\nMissing values per column:"\cf2 )\
+\cf9 print\cf2 (df.isna().\cf9 sum\cf2 ())\
+\'a0\
+\cf7 # 3. Preview a few example reviews\cf2 \
+\cf9 print\cf2 (\cf8 "\\nSample reviews:"\cf2 )\
+\cf9 print\cf2 (df[\cf8 'review'\cf2 ].sample(\cf10 5\cf2 , random_state
+\f2\b \cf5 =
+\f3\b0 \cf10 42\cf2 ))\
+\
+\cf7 # 4. Calculate average review length in number of words\cf2 \'a0\
+df[\cf8 'review_length'\cf2 ] 
+\f2\b \cf5 =
+\f3\b0 \cf2  df[\cf8 'review'\cf2 ].astype(\cf9 str\cf2 ).\cf9 apply\cf2 (
+\f2\b \cf5 lambda
+\f3\b0 \cf2  x: \cf9 len\cf2 (x.split()))\
+average_length 
+\f2\b \cf5 =
+\f3\b0 \cf2  df[\cf8 'review_length'\cf2 ].mean()\
+\cf9 print\cf2 (f\cf8 "\\nAverage review length (in words): \{average_length:.2f\}"\cf2 )
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+RULE BASED SYSTEM\
+\pard\pardeftab720\sa320\qj\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+Sistem zasnovan na pravilima (rule-based system) koristi unapred definisane obrasce \'96 pravila \'96 za klasifikaciju teksta.
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+import
+\f3\b0 \cf2  pandas as pd\
+\cf7 # Define simple keyword lists\cf2 \
+positive_words 
+\f2\b \cf5 =
+\f3\b0 \cf2  [\cf8 "great"\cf2 , \cf8 "excellent"\cf2 , \cf8 "amazing"\cf2 , \cf8 "love"\cf2 , \cf8 "perfect"\cf2 , \cf8 "good"\cf2 , \cf8 "fantastic"\cf2 , \cf8 "happy"\cf2 , \cf8 "recommend"\cf2 ]\
+negative_words 
+\f2\b \cf5 =
+\f3\b0 \cf2  [\cf8 "bad"\cf2 , \cf8 "terrible"\cf2 , \cf8 "worst"\cf2 , \cf8 "broken"\cf2 , \cf8 "poor"\cf2 , \cf8 "disappointed"\cf2 , \cf8 "awful"\cf2 , \cf8 "hate"\cf2 , \cf8 "slow"\cf2 ]\
+\cf7 # Define a simple rule-based sentiment classifier (binary only)\cf2 \
+\'a0\
+
+\f2\b \cf5 def
+\f3\b0 \cf2  classify_sentiment(text):\
+\pard\pardeftab720\partightenfactor0
+\cf11 \'a0\'a0\'a0 \cf2 text 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 str\cf2 (text).lower()\
+\cf11 \'a0\'a0\'a0 \cf2 pos_hits 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 sum\cf2 (word 
+\f2\b \cf5 in
+\f3\b0 \cf2  text 
+\f2\b \cf5 for
+\f3\b0 \cf2  word 
+\f2\b \cf5 in
+\f3\b0 \cf2  positive_words)\
+\cf11 \'a0\'a0\'a0 \cf2 neg_hits 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 sum\cf2 (word 
+\f2\b \cf5 in
+\f3\b0 \cf2  text 
+\f2\b \cf5 for
+\f3\b0 \cf2  word 
+\f2\b \cf5 in
+\f3\b0 \cf2  negative_words)\
+\cf11 \'a0\'a0\'a0 
+\f2\b \cf5 if
+\f3\b0 \cf2  pos_hits >
+\f2\b \cf5 =
+\f3\b0 \cf2  neg_hits:\
+\cf11 \'a0\'a0\'a0 \'a0 \'a0 
+\f2\b \cf5 return
+\f3\b0 \cf2  \cf8 "positive"\cf2 \
+\cf11 \'a0\'a0\'a0 
+\f2\b \cf5 else
+\f3\b0 \cf2 :\
+\cf11 \'a0\'a0\'a0 \'a0 \'a0 
+\f2\b \cf5 return
+\f3\b0 \cf2  \cf8 "negative"
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+Primjer - povjeravamo da li je sistem pravilno klasifikovao recenziju:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs28 \cf5 \cb6 \expnd0\expndtw0\kerning0
+import
+\f3\b0 \cf2  pandas as pd\
+\
+\cf7 # Define simple keyword lists\cf2 \
+positive_words 
+\f2\b \cf5 =
+\f3\b0 \cf2  [\cf8 "great"\cf2 , \cf8 "excellent"\cf2 , \cf8 "amazing"\cf2 , \cf8 "love"\cf2 , \cf8 "perfect"\cf2 , \cf8 "good"\cf2 , \cf8 "fantastic"\cf2 , \cf8 "happy"\cf2 , \cf8 "recommend"\cf2 ]\
+negative_words 
+\f2\b \cf5 =
+\f3\b0 \cf2  [\cf8 "bad"\cf2 , \cf8 "terrible"\cf2 , \cf8 "worst"\cf2 , \cf8 "broken"\cf2 , \cf8 "poor"\cf2 , \cf8 "disappointed"\cf2 , \cf8 "awful"\cf2 , \cf8 "hate"\cf2 , \cf8 "slow"\cf2 ]\
+\
+\cf7 # Define a simple rule-based sentiment classifier (binary only)\cf2 \
+
+\f2\b \cf5 def
+\f3\b0 \cf2  classify_sentiment(text):\
+\pard\pardeftab720\partightenfactor0
+\cf11 \'a0\'a0\'a0 \cf2 text 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 str\cf2 (text).lower()\
+\cf11 \'a0\'a0\'a0 \cf2 pos_hits 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 sum\cf2 (word 
+\f2\b \cf5 in
+\f3\b0 \cf2  text 
+\f2\b \cf5 for
+\f3\b0 \cf2  word 
+\f2\b \cf5 in
+\f3\b0 \cf2  positive_words)\
+\cf11 \'a0\'a0\'a0 \cf2 neg_hits 
+\f2\b \cf5 =
+\f3\b0 \cf2  \cf9 sum\cf2 (word 
+\f2\b \cf5 in
+\f3\b0 \cf2  text 
+\f2\b \cf5 for
+\f3\b0 \cf2  word 
+\f2\b \cf5 in
+\f3\b0 \cf2  negative_words)\cf11 \'a0\'a0\'a0\cf2 \'a0\
+\cf11 \'a0\'a0\'a0 
+\f2\b \cf5 if
+\f3\b0 \cf2  pos_hits >
+\f2\b \cf5 =
+\f3\b0 \cf2  neg_hits:\
+\cf11 \'a0\'a0\'a0 \'a0 \'a0 
+\f2\b \cf5 return
+\f3\b0 \cf2  \cf8 "positive"\cf2 \
+\cf11 \'a0\'a0\'a0 
+\f2\b \cf5 else
+\f3\b0 \cf2 :\
+\cf11 \'a0\'a0\'a0 \'a0 \'a0 
+\f2\b \cf5 return
+\f3\b0 \cf2  \cf8 "negative"\cf2 \
+\'a0\
+\pard\pardeftab720\partightenfactor0
+\cf7 # Load labeled dataset\cf2 \
+df 
+\f2\b \cf5 =
+\f3\b0 \cf2  pd.read_csv(\cf8 "data/reviews_labeled_cleaned.csv"\cf2 )\
+\'a0\'a0\
+\cf7 # Apply the classifier\cf2 \
+df[\cf8 'predicted_sentiment'\cf2 ] 
+\f2\b \cf5 =
+\f3\b0 \cf2  df[\cf8 'review'\cf2 ].\cf9 apply\cf2 (classify_sentiment)\
+\
+\cf7 # Save the results to a new CSV file\cf2 \'a0\
+df.to_csv(\cf8 "data/reviews_with_predicted_sentiment.csv"\cf2 , index
+\f2\b \cf5 =
+\f3\b0 \cf12 False\cf2 )\
+\'a0\
+\cf7 # Display sample output in the terminal (only selected columns)\cf2 \
+\cf9 print\cf2 (df[[\cf8 'review'\cf2 , \cf8 'sentiment'\cf2 , \cf8 'predicted_sentiment'\cf2 ]].head(\cf10 20\cf2 ))
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15900\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrs\brdrw20\brdrcf4 \clbrdrl\brdrs\brdrw20\brdrcf4 \clbrdrb\brdrs\brdrw20\brdrcf4 \clbrdrr\brdrs\brdrw20\brdrcf4 \clpadt40 \clpadl80 \clpadb40 \clpadr40 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sa320\qj\partightenfactor0
+
+\f4\b\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\'8ata je inferencija?
+\f0\b0 \cb1 \
+\pard\intbl\itap1\pardeftab720\sa320\qj\partightenfactor0
+\cf2 \cb3 Inferencija je trenutak kada pitamo svoj model za mi\'9aljenje o novim podacima \'96 a on koristi sve \'9ato je nau\uc0\u269 io tokom treninga da bi doneo odluku.\cell \lastrow\row
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 KORACI ZA ML PROJEKAT\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0
+\f0\fs28 \cf2 \cb6 {\listtext	1	}\expnd0\expndtw0\kerning0
+Prikupljanje sirovih podataka (raw data gathering)\cb1 \uc0\u8232 \cb6 Prvi korak je nabavka i pregled podataka. Na\'9a zadatak: 170.000+ recenzija, svaka sa naslovom, proizvodom, cenom... Nema vi\'9ae malih test fajlova \'96 ovo je big data u praksi! Ove podatke \uc0\u263 emo preuzeti i pripremiti za dalju analizu.\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Istra\'9eiva\uc0\u269 ka analiza podataka (exploratory data analysis \'96 EDA)\cb1 \uc0\u8232 \cb6 Ne bacamo se odmah na modele! Prvo malo \'9apijuniranja. Va\'9eno je da shvatimo kakvi su na\'9ai podaci:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\qj\partightenfactor0
+\ls1\ilvl1\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Kako su raspore\uc0\u273 eni sentimenti?\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Ima li recenzija koje su sumnjive ili preduga\uc0\u269 ke/prekratke?\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Ima li praznih vrednosti i potencijalnih anomalija (ili, R re\uc0\u269 nikom, NA)?\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Treba ste\uc0\u263 i intuiciju o tome da li mo\'9eemo da unapredimo podatke i kako da to uradimo.\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Obrada i \uc0\u269 i\'9a\u263 enje podataka (data processing)\cb1 \uc0\u8232 \cb6 Sad je vreme za generalno spremanje podataka za treniranje modela:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\qj\partightenfactor0
+\ls1\ilvl1\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+uklanjamo nedostaju\uc0\u263 e vrednosti i sve \'9ato je suvi\'9ano ili nejasno;\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+standardizujemo tekst (npr. mala slova, uklanjanje oznaka, slova itd.);\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+proveravamo da li zapisi imaju relevantne informacije za modele.\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	4	}\expnd0\expndtw0\kerning0
+In\'9eenjering karakteristika (feature engineering)\cb1 \uc0\u8232 \cb6 Ovde odlu\uc0\u269 ujemo \'9ata na\'9aem modelu treba za pametno odlu\u269 ivanje. Prvo \u263 emo razmotriti koje od karakteristika nisu relevantne za na\'9a budu\u263 i model i njih \u263 emo ukloniti. Nakon toga \u263 emo poku\'9aati da generi\'9aemo nove karakteristike na osnovu postoje\u263 ih podataka i da na taj na\u269 in olak\'9aamo modelu razvrstavanje recenzija.\cb1 \
+\ls1\ilvl0\cb6 \kerning1\expnd0\expndtw0 {\listtext	5	}\expnd0\expndtw0\kerning0
+Odabir algoritma (algorithm selection)\cb1 \uc0\u8232 \cb6 Koji algoritam je najzreliji za na\'9a zadatak? Na osnovu problema (klasifikacija sentimenta), odlu\uc0\u269 i\u263 emo koje algoritmi ima najvi\'9ae smisla primeniti \'96 na primer:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\qj\partightenfactor0
+\ls1\ilvl1\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Logistic Regression;\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Naive Bayes;\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+Random Forest ili SVM\'85\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	6	}\expnd0\expndtw0\kerning0
+Treniranje modela (model training)\cb1 \uc0\u8232 \cb6 Sad dolazimo do dela gde di\'9eemo tegove. Trenira\uc0\u263 emo nekoliko modela kori\'9a\u263 enjem razli\u269 itih algoritama:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\qj\partightenfactor0
+\ls1\ilvl1\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+na\'9ai modeli u\uc0\u269 e na obele\'9eenim podacima;\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+pratimo napredak na trening skupu.\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	7	}\expnd0\expndtw0\kerning0
+Evaluacija i testiranje (model validation & testing)\cb1 \uc0\u8232 \cb6 Testiramo svaki model na nevi\uc0\u273 enim podacima:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\qj\partightenfactor0
+\ls1\ilvl1\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+koristimo sve \'9ato znamo: ta\uc0\u269 nost, preciznost, odziv, F1, matricu zabune\'85;\cb1 \
+\ls1\ilvl1\cb6 \kerning1\expnd0\expndtw0 {\listtext	
+\f5 \uc0\u9702 
+\f0 	}\expnd0\expndtw0\kerning0
+biramo pobednika.\cb1 \uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls1\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	8	}\expnd0\expndtw0\kerning0
+\uc0\u268 uvanje i eksport modela (model exporting)\cb1 \uc0\u8232 \cb6 \'8aampiona pakujemo i \uc0\u269 uvamo (.pkl), pomo\u263 u joblib modula, tako da mo\'9ee biti ponovo u\u269 itan i kori\'9a\u263 en za predikcije u budu\u263 nosti.\cb1 \uc0\u8232 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 KLONIRANJE GITHUB\
+\pard\pardeftab720\sa320\qj\partightenfactor0
+
+\f0\fs28 \cf2 \cb6 \expnd0\expndtw0\kerning0
+Kreira\uc0\u263 emo lokalni repozitorijum na svom ra\u269 unaru, dodati skup podataka i kona\u269 no pushovati sve to nazad na GitHub.\cb1 \
+\cb6 Koraci koje \uc0\u263 emo sprovesti\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\qj\partightenfactor0
+\ls2\ilvl0\cf2 \cb6 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Kloniraj repozitorijum na svoj ra\uc0\u269 unar\cb1 \uc0\u8232 \cb6 U terminalu (ili Git Bashu) unesemo:\cb1 \uc0\u8232 
+\f3 \cb6 git clone {\field{\*\fldinst{HYPERLINK "https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git"}}{\fldrslt \cf13 https://github.com/YOUR_USERNAME/REPOSITORY_NAME.git}}\cb1 \uc0\u8232 
+\f0 \uc0\u8232 \cb6 Zameni YOUR_USERNAME i REPOSITORY_NAME svojim GitHub korisni\uc0\u269 kim imenom i nazivom repozitorijuma.\cb1 \
+\ls2\ilvl0\cb6 \kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Napravi folder za podatke\cb1 \uc0\u8232 \cb6 U glavnom folderu repozitorijuma, napravi folder data/:\cb1 \uc0\u8232 
+\f3 \cb6 mkdir data\cb1 \uc0\u8232 
+\f0 \uc0\u8232 \cb6 Ili uradi to ru\uc0\u269 no preko File Explorera / Findera, ako ti je tako lak\'9ae.\cb1 \
+\ls2\ilvl0\cb6 \kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Dodaj skup podataka\cb1 \uc0\u8232 \cb6 Preuzmi fajl sa svim recenzijama\'a0{\field{\*\fldinst{HYPERLINK "https://www.link-elearning.com/linkdl/coursefiles/1956/IMLP4_13-product_reviews_full.csv"}}{\fldrslt 
+\f3 \cf13 product_reviews_full.csv}}\cb1 \uc0\u8232 \cb6 Kopiraj CSV fajl u data/ folder (opet lokalno).\cb1 \
+\ls2\ilvl0\cb6 \kerning1\expnd0\expndtw0 {\listtext	4	}\expnd0\expndtw0\kerning0
+Komituj i pushuj izmene na GitHubU terminalu:\cb1 \uc0\u8232 
+\f3 \cb6 git add .
+\f0 \cb1 \uc0\u8232 
+\f3 \cb6 git commit -m " Dataset added."
+\f0 \cb1 \uc0\u8232 
+\f3 \cb6 git push
+\f0 \cb1 \uc0\u8232 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\'f6\'e4\'fc}
